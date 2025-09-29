@@ -19,6 +19,7 @@ async function login(req, res) {
         const token = generateToken({ username: user.username });
 
         activeTokens.push(token);
+        console.log(`token: ${token}`);
         return res.json({ token });
 
     } catch (err) {
@@ -28,5 +29,6 @@ async function login(req, res) {
 }
 
 module.exports = {
-    login
+    login,
+    activeTokens
 };
