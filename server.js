@@ -2,8 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const carsRoutes = require("./routes/carRoute");
+const loginRoutes = require("./routes/loginRoute");
 // const logger = require("./middleware/carMiddleware");
 
+//.env
+require("dotenv").config();
+
+//express
 app.use(express.json());
 
 //CORS
@@ -21,6 +26,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/cars", carsRoutes);
+app.use("/login", loginRoutes);
 
 
 //PORT
