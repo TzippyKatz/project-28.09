@@ -1,4 +1,5 @@
 const { users, activeTokens } = require("../data/userStore");
+const { isExistToken } = require("../utils/util");
 
 function authCheck(req, res, next) {
     if (!req.headers.authorization) { return res.status(401).json("Unauthorized"); }
@@ -6,7 +7,7 @@ function authCheck(req, res, next) {
 
     const token = req.headers.authorization.split(" ")[1];
 
-    if (token && activeTokens.includes(token)) {
+    if (token && isExistToken(token)) {
         console.log("Authorized via middleware");
         next();
     } else {

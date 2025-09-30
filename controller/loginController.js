@@ -1,9 +1,10 @@
 const bcrypt = require("bcrypt");
 const generateToken = require("../utils/JWTToken");
+const { addToken } = require("../utils/util");
 
 async function login(req, res) {
     try {
-        const { users, activeTokens } = require("../data/userStore");
+        const { users } = require("../data/userStore");
         const { username, password } = req.body;
 
         const user = users.find(u => u.username === username);
@@ -17,7 +18,7 @@ async function login(req, res) {
 
         const token = generateToken({ username: user.username });
 
-        activeTokens.push(token);
+        addToken(token);
         console.log(`token: ${token}`);
         return res.json({ token });
 
