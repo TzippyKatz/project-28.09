@@ -4,6 +4,7 @@ const cors = require("cors");
 const carsRoutes = require("./routes/carRoute");
 const loginRoutes = require("./routes/loginRoute");
 const logoutRoute = require("./routes/logoutRoute");
+const registerRoute = require("./routes/registerRoute");
 // const logger = require("./middleware/carMiddleware");
 
 //.env
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 app.use("/cars", carsRoutes);
 app.use("/login", loginRoutes);
 app.use("/logout", logoutRoute);
+app.use("/register", registerRoute);
 
 
 //PORT
