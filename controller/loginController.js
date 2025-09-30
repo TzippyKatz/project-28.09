@@ -1,10 +1,9 @@
 const bcrypt = require("bcrypt");
 const generateToken = require("../utils/JWTToken");
-const users = [{ username: "admin", passwordHash: bcrypt.hashSync("1234", 10) }];
-const activeTokens = [];
 
 async function login(req, res) {
     try {
+        const { users, activeTokens } = require("../data/userStore");
         const { username, password } = req.body;
 
         const user = users.find(u => u.username === username);
@@ -30,5 +29,4 @@ async function login(req, res) {
 
 module.exports = {
     login,
-    activeTokens
 };

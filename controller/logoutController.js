@@ -1,4 +1,4 @@
-const { activeTokens } = require("./loginController");
+const { activeTokens } = require("../data/userStore");
 
 async function logout(req, res) {
     console.log(`activeTokens before: ${activeTokens}`);
